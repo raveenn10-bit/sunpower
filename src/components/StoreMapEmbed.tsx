@@ -11,9 +11,9 @@ const STORE_MAPS = [
     name: "Dewata",
     label: "01 / GALLE",
     embedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.0!2d80.2!3d6.08!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSunpower+Farmers+Market+470B+Matara+Road+Galle!5e0!3m2!1sen!2slk!4v1",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.625887964434!2d80.2359635!3d6.0330547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae1737eb54b1599%3A0xea8b418d931fc3db!2sSunpower%20Farmers%20Market!5e0!3m2!1sen!2slk!4v1713000000000!5m2!1sen!2slk",
     directionsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Sunpower+Farmers+Market+470B+Matara+Road+Galle",
+      "https://maps.app.goo.gl/D6W3dzBxecQL47tf7",
     address: "470/B, Matara Road, Dewata, Galle",
     phone: "076 879 3627",
     color: "bg-sun-orange",
@@ -23,9 +23,9 @@ const STORE_MAPS = [
     name: "Galle Fort",
     label: "02 / INSIDE THE FORT",
     embedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.0!2d80.2167!3d6.0295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSunpower+Farmers+Market+10+Leyn+Baan+Street+Galle+Fort!5e0!3m2!1sen!2slk!4v1",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.89!2d80.2160744!3d6.027266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae1730019f854d5%3A0xd5f04b3de1441c3f!2sSunpower%20farmers%20Market!5e0!3m2!1sen!2slk!4v1713000000000!5m2!1sen!2slk",
     directionsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Sunpower+Farmers+Market+10+Leyn+Baan+Street+Galle+Fort",
+      "https://maps.app.goo.gl/fhJ7BmehLdtTkaw7A",
     address: "10, Leyn Baan Street, Galle Fort",
     phone: null,
     color: "bg-forest",
@@ -35,9 +35,9 @@ const STORE_MAPS = [
     name: "Ahangama",
     label: "03 / DOWN THE COAST",
     embedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.0!2d80.3667!3d5.975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSunpower+Super+91+Matara+Road+Ahangama!5e0!3m2!1sen!2slk!4v1",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.123456789!2d80.3638584!3d5.971148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae11384149a1d6d%3A0xf35b7770cda2cd86!2sSunpower%20Super!5e0!3m2!1sen!2slk!4v1713000000000!5m2!1sen!2slk",
     directionsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Sunpower+Super+91+Matara+Road+Ahangama",
+      "https://maps.app.goo.gl/4qtkFeNdzpcV4wgYA",
     address: "91, Matara Road, Ahangama",
     phone: "076 828 0128",
     color: "bg-sun-amber",

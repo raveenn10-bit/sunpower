@@ -8,19 +8,19 @@ import { MobileAutoScroll } from "@/components/MobileAutoScroll";
 
 const GALLERY_PHOTOS = [
   {
-    image: "/assets/produce.jpg",
-    title: "Morning Harvest",
-    caption: "Crisp salad greens & tropical fruits arriving from local smallholder farms.",
+    image: "/assets/store-dewata-1.jpg",
+    title: "Sunpower Dewata Market",
+    caption: "Daily fresh organic produce & farm harvests along Matara Road, Dewata.",
   },
   {
-    image: "/assets/breakfast.jpg",
-    title: "Post-Surf Bowls",
-    caption: "Miss NuTri granola, Nourish yogurt and raw coconut honey in Ahangama.",
+    image: "/assets/store-ahangama-1.jpg",
+    title: "Sunpower Super Ahangama",
+    caption: "Full coastal supermarket stocked for everyday essentials, travellers and surfers.",
   },
   {
-    image: "/assets/market.jpg",
-    title: "Artisanal Pantry",
-    caption: "Heirloom spices, cold-pressed oils and natural living goods on display.",
+    image: "/assets/store-dewata-3.jpg",
+    title: "Natural Living & Wellness",
+    caption: "Chemical-free body care, handmade soaps, essential oils and local pantry goods.",
   },
 ];
 

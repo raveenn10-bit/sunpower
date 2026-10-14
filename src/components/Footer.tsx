@@ -109,33 +109,39 @@ export function Footer() {
               local growers directly to Sri Lanka’s southern coast community.
             </p>
 
-            <div className="pt-1 flex items-center gap-3 text-xs text-cream/80">
-              <a
-                href="https://www.facebook.com/sunpowerfarmersmarket/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-cream/10 flex items-center justify-center hover:bg-sun-orange hover:text-forest-dark transition-colors"
-                aria-label="Follow Sunpower on Facebook"
-              >
-                <FacebookLogo size={16} weight="fill" />
-              </a>
-              <a
-                href="https://www.instagram.com/sunpowerfarmersmarket/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-cream/10 flex items-center justify-center hover:bg-sun-orange hover:text-forest-dark transition-colors"
-                aria-label="Follow Sunpower on Instagram"
-              >
-                <InstagramLogo size={16} weight="fill" />
-              </a>
+            {/* Authentic Coloured Social Icons */}
+            <div className="pt-2 flex items-center gap-3.5 text-xs">
+              {/* WhatsApp */}
               <a
                 href={`https://wa.me/${WHATSAPP_INTL_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-cream/10 flex items-center justify-center hover:bg-sun-orange hover:text-forest-dark transition-colors"
-                aria-label="WhatsApp Sunpower"
+                className="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] hover:scale-110 active:scale-95 transition-all duration-200"
+                aria-label="Chat with Sunpower on WhatsApp"
               >
-                <WhatsappLogo size={16} weight="fill" />
+                <WhatsappLogo size={19} weight="fill" />
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/sunpowerfarmersmarket/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-[0_4px_14px_rgba(24,119,242,0.4)] hover:shadow-[0_6px_20px_rgba(24,119,242,0.6)] hover:scale-110 active:scale-95 transition-all duration-200"
+                aria-label="Follow Sunpower on Facebook"
+              >
+                <FacebookLogo size={19} weight="fill" />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/sunpowerfarmersmarket/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-[linear-gradient(45deg,#f09433_0%,#e6683c_25%,#dc2743_50%,#cc2366_75%,#bc1888_100%)] text-white flex items-center justify-center shadow-[0_4px_14px_rgba(220,39,67,0.4)] hover:shadow-[0_6px_20px_rgba(220,39,67,0.6)] hover:scale-110 active:scale-95 transition-all duration-200"
+                aria-label="Follow Sunpower on Instagram"
+              >
+                <InstagramLogo size={19} weight="fill" />
               </a>
             </div>
           </div>

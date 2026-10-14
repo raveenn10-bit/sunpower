@@ -2,45 +2,58 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Star, ArrowLeft, ArrowRight, Quotes } from "@phosphor-icons/react";
+import { Star, ArrowLeft, ArrowRight, Quotes, ArrowUpRight } from "@phosphor-icons/react";
 import { SectionReveal } from "@/components/SectionReveal";
 import { WHATSAPP_INTL_NUMBER } from "@/data/products";
 
 const TESTIMONIALS = [
   {
-    name: "Sarah M.",
-    location: "Galle Fort",
+    name: "Senali Mendis",
+    location: "Dewata Branch",
     stars: 5,
-    text: "Sunpower has completely changed how I shop. The granola selection is incredible, and the team always knows exactly what's in stock. Love that I can just WhatsApp them before visiting!",
-    tag: "Regular Customer",
+    text: "Highly recommending their Activated Charcoal Face Soap, if you have sensitive skin. After trying many products for years, that irritated my skin, I'm relieved I found this. Restocked more cakes of soap for another 6 months after testing one 😉",
+    tag: "Local Regular",
+    mapsUrl: "https://maps.app.goo.gl/D6W3dzBxecQL47tf7",
   },
   {
-    name: "Tom & Klara",
-    location: "Ahangama (Villa Stay)",
+    name: "Shar Dean",
+    location: "Galle Coast",
     stars: 5,
-    text: "We had Sunpower stock our villa for a two-week stay — fresh produce, Nourish yogurt, Ceylon Coconut Company oils. Everything was exactly right. Outstanding personal service.",
-    tag: "Villa Guest",
+    text: "What a great service! Lovely fresh fruit and veggies delivered to my door. We had a delicious herb omelette for dinner, the flavours were so good. I was delighted to find they had tamarillos - I haven’t had them since my childhood in NZ - they were every bit as good as I remembered. Will definitely be ordering again ☺️",
+    tag: "Home Delivery",
+    mapsUrl: "https://maps.app.goo.gl/D6W3dzBxecQL47tf7",
   },
   {
-    name: "Raveendra",
-    location: "Dewata, Galle",
+    name: "Lea M",
+    location: "Dewata Branch",
     stars: 5,
-    text: "හොඳම market එක Galle district එකේ. Products ටික fresh, team ටික helpful. WhatsApp message කරාම ගොඩක් ඉක්මනට reply කරනවා.",
-    tag: "Local Customer",
+    text: "I love the Organic Shop. Very good Shampoo und Body wash 😍 and the cashier is always calm nice and friendly.",
+    tag: "Store Visitor",
+    mapsUrl: "https://maps.app.goo.gl/D6W3dzBxecQL47tf7",
   },
   {
-    name: "Priya D.",
-    location: "Unawatuna",
+    name: "Baktybala Torgautova",
+    location: "Sunpower Super, Ahangama",
     stars: 5,
-    text: "Discovered Momiji Natural products here that I couldn't find anywhere else in the south. The store feels curated and thoughtful — every visit I find something new.",
-    tag: "Wellness Enthusiast",
+    text: "Such a good shop with great varieties of products. Dairy, spices, fruits and vegetables, and beauty care. Staff is welcoming and friendly.",
+    tag: "Ahangama Branch",
+    mapsUrl: "https://maps.app.goo.gl/4qtkFeNdzpcV4wgYA",
   },
   {
-    name: "James R.",
-    location: "Surf Stay, Ahangama",
+    name: "Ravindu Gimhan",
+    location: "Southern Province",
     stars: 5,
-    text: "Perfect for surf recovery! Picked up fresh coconut water, protein granola, and local produce after morning sessions. Friendly team, great range for health-conscious travellers.",
-    tag: "Surf Traveller",
+    text: "Great selection of organic products and fresh produce! Clean store, good prices, and lovely customer service. My go-to spot for natural and eco-friendly items in the south.",
+    tag: "Verified Customer",
+    mapsUrl: "https://maps.app.goo.gl/D6W3dzBxecQL47tf7",
+  },
+  {
+    name: "Ewa Juz",
+    location: "South Coast",
+    stars: 5,
+    text: "Amazing place! We loved the soap from our hotel so asked hosts for directions, great natural products for your body care, coffees & spices!",
+    tag: "Tourist / Visitor",
+    mapsUrl: "https://maps.app.goo.gl/D6W3dzBxecQL47tf7",
   },
 ];
 
@@ -85,9 +98,26 @@ export function TestimonialsSection() {
         <SectionReveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-cream/50 uppercase block mb-3">
-                WHAT PEOPLE SAY
-              </span>
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <span className="text-[10px] font-semibold tracking-[0.25em] text-cream/50 uppercase">
+                  WHAT PEOPLE SAY
+                </span>
+                <a
+                  href="https://maps.app.goo.gl/D6W3dzBxecQL47tf7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-cream/10 hover:bg-cream/20 text-cream border border-cream/20 hover:border-sun-orange/60 transition-all group backdrop-blur-sm"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+                  <span className="text-cream group-hover:text-sun-orange transition-colors">
+                    Verified Google Reviews · 5.0 ★ (Dewata & Ahangama Branches)
+                  </span>
+                  <ArrowUpRight
+                    size={13}
+                    className="text-sun-orange group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                  />
+                </a>
+              </div>
               <h2 className="font-serif text-3xl sm:text-5xl text-cream leading-tight">
                 Loved by our
                 <br />
@@ -135,11 +165,21 @@ export function TestimonialsSection() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <StarRating count={active.stars} />
                   <span className="text-[10px] uppercase tracking-wider text-cream/50 font-semibold border border-cream/20 px-2 py-0.5 rounded-full">
                     {active.tag}
                   </span>
+                  <a
+                    href={active.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] tracking-wider text-sun-orange hover:text-cream font-medium bg-cream/10 hover:bg-cream/20 border border-cream/20 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1 transition-colors"
+                    title="View branch on Google Maps"
+                  >
+                    <span>Google Review</span>
+                    <ArrowUpRight size={11} />
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -192,14 +232,26 @@ export function TestimonialsSection() {
             <p className="text-xs text-cream/50 mb-4">
               Share your Sunpower experience
             </p>
-            <a
-              href={`https://wa.me/${WHATSAPP_INTL_NUMBER}?text=Hi%20Sunpower!%20I%20wanted%20to%20share%20some%20feedback%20about%20my%20visit.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-semibold text-sun-orange hover:text-cream border-b border-sun-orange/50 hover:border-cream pb-0.5 transition-all"
-            >
-              Message us on WhatsApp ↗
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <a
+                href="https://maps.app.goo.gl/D6W3dzBxecQL47tf7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-cream hover:text-sun-orange transition-colors"
+              >
+                <span>Read reviews on Google Maps</span>
+                <ArrowUpRight size={14} className="text-sun-orange" />
+              </a>
+              <span className="text-cream/25 text-xs hidden sm:inline">•</span>
+              <a
+                href={`https://wa.me/${WHATSAPP_INTL_NUMBER}?text=Hi%20Sunpower!%20I%20wanted%20to%20share%20some%20feedback%20about%20my%20visit.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-sun-orange hover:text-cream border-b border-sun-orange/50 hover:border-cream pb-0.5 transition-all"
+              >
+                Message us on WhatsApp ↗
+              </a>
+            </div>
           </div>
         </SectionReveal>
       </div>
