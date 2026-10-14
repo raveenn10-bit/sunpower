@@ -15,7 +15,8 @@ import { FounderFeature } from "@/components/FounderFeature";
 import { CoastalLifestyleSection } from "@/components/CoastalLifestyleSection";
 import { ProvisioningBoxes } from "@/components/ProvisioningBoxes";
 import { NearestStoreFinder } from "@/components/NearestStoreFinder";
-import { CommunityGallery } from "@/components/CommunityGallery";
+import { PhotoGallery } from "@/components/PhotoGallery";
+import { PortraitVideoSection } from "@/components/PortraitVideoSection";
 import { ScrollMotionShowcase } from "@/components/ScrollMotionShowcase";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 
@@ -381,8 +382,11 @@ export default function HomePage() {
       {/* ─── COASTAL ROUTE EXPLORER ─── */}
       <CoastalRouteExplorer />
 
-      {/* ─── COMMUNITY PHOTO GALLERY ─── */}
-      <CommunityGallery />
+      {/* ─── 9:16 PORTRAIT VIDEO REELS SHOWCASE ─── */}
+      <PortraitVideoSection />
+
+      {/* ─── AUTHENTIC STORE PHOTO GALLERY ─── */}
+      <PhotoGallery />
 
       {/* ─── CUSTOMER REVIEWS & TESTIMONIALS ─── */}
       <TestimonialsSection />

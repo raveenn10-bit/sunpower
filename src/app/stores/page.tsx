@@ -5,6 +5,7 @@ import { STORES } from "@/data/products";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 import { StoreMapEmbed } from "@/components/StoreMapEmbed";
+import { PhotoGallery } from "@/components/PhotoGallery";
 
 export const metadata = {
   title: "Our Stores",
@@ -132,6 +133,9 @@ export default function StoresPage() {
 
       {/* ─── INTERACTIVE MAP LOCATOR ─── */}
       <StoreMapEmbed />
+
+      {/* ─── AUTHENTIC STORE PHOTO GALLERY ─── */}
+      <PhotoGallery />
 
       {/* ─── VISIT NOTE BANNER ─── */}
       <section className="bg-forest text-cream py-20 px-6 sm:px-8 border-t border-forest-muted">
