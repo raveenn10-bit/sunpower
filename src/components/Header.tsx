@@ -53,13 +53,13 @@ export function Header() {
             className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange rounded"
             aria-label="Sunpower Farmers Market home"
           >
-            <div className="relative w-12 h-12 flex-shrink-0">
+            <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 border-2 border-sun-orange/80 bg-white shadow-sm">
               <Image
-                src="/assets/sunpower-logo-new.png"
-                alt="Sunpower Farmers Market official logo"
+                src="/assets/sunpower-icon.png"
+                alt="Sunpower Farmers Market logo"
                 fill
-                sizes="48px"
-                className="object-contain group-hover:scale-105 transition-transform"
+                sizes="44px"
+                className="object-cover object-center group-hover:scale-105 transition-transform"
                 priority
               />
             </div>

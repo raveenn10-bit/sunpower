@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
@@ -80,23 +80,23 @@ export default function AboutPage() {
               Visit a store to see the latest arrivals, or send a shopping inquiry to our team.
             </p>
 
-            {/* Founder Card with Official Emblem */}
-            <div className="pt-4 flex items-center gap-4 border-t border-cream-border">
-              <div className="relative w-12 h-12 rounded-full border border-sun-orange/40 overflow-hidden bg-cream-warm flex-shrink-0 shadow-sm p-1">
+            {/* Founder Card with Official Portrait & Title */}
+            <div className="pt-6 flex items-center gap-4 border-t border-cream-border">
+              <div className="relative w-16 h-16 rounded-full border-2 border-sun-orange overflow-hidden bg-white flex-shrink-0 shadow-md">
                 <Image
-                  src="/assets/sunpower-logo-new.png"
-                  alt="Sunpower Farmers Market official emblem"
+                  src="/assets/nadeesha-gayan.jpg"
+                  alt="Mr. Nadeesha Gayan, CEO & Founder of Sunpower Farmers Market & Sunpower Supermarket"
                   fill
-                  sizes="48px"
-                  className="object-contain p-0.5"
+                  sizes="64px"
+                  className="object-cover object-top"
                 />
               </div>
               <div>
-                <strong className="block text-sm font-semibold text-forest">
+                <strong className="block text-base font-serif font-semibold text-forest">
                   Mr. Nadeesha Gayan
                 </strong>
-                <small className="block text-xs text-forest/60">
-                  Founder & Visionary, Sunpower Super & Farmers Market
+                <small className="block text-xs text-forest/70 font-medium">
+                  CEO & Founder, Sunpower Farmers Market & Sunpower Supermarket
                 </small>
               </div>
             </div>

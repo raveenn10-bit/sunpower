@@ -1,8 +1,10 @@
-﻿import React from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { STORES } from "@/data/products";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+
+import { StoreMapEmbed } from "@/components/StoreMapEmbed";
 
 export const metadata = {
   title: "Our Stores",
@@ -43,13 +45,13 @@ export default function StoresPage() {
               <div className="space-y-5">
                 <div className="flex items-center justify-between text-[10px] uppercase tracking-widest text-forest/70 font-mono">
                   <div className="flex items-center gap-2">
-                    <div className="relative w-5 h-5 rounded-full overflow-hidden bg-cream-warm border border-sun-orange/40 flex-shrink-0 p-0.5 shadow-xs">
+                    <div className="relative w-5 h-5 rounded-full overflow-hidden bg-white border border-sun-orange/50 flex-shrink-0 shadow-xs">
                       <Image
-                        src="/assets/sunpower-logo-new.png"
+                        src="/assets/sunpower-icon.png"
                         alt="Sunpower emblem"
                         fill
                         sizes="20px"
-                        className="object-contain"
+                        className="object-cover object-center"
                       />
                     </div>
                     <span>{store.tag}</span>
@@ -127,6 +129,9 @@ export default function StoresPage() {
           ))}
         </div>
       </section>
+
+      {/* ─── INTERACTIVE MAP LOCATOR ─── */}
+      <StoreMapEmbed />
 
       {/* ─── VISIT NOTE BANNER ─── */}
       <section className="bg-forest text-cream py-20 px-6 sm:px-8 border-t border-forest-muted">

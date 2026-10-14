@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
@@ -54,8 +54,8 @@ export default function CataloguePage() {
       <section className="bg-cream-dark py-16 sm:py-24 border-b border-cream-border/60">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-4">
           <div className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.25em] text-forest/70 uppercase">
-            <div className="relative w-4 h-4 rounded-full overflow-hidden bg-cream flex-shrink-0 border border-sun-orange/40">
-              <Image src="/assets/sunpower-logo-new.png" alt="Sunpower emblem" fill sizes="16px" className="object-contain p-0.5" />
+            <div className="relative w-4 h-4 rounded-full overflow-hidden bg-white flex-shrink-0 border border-sun-orange/50">
+              <Image src="/assets/sunpower-icon.png" alt="Sunpower emblem" fill sizes="16px" className="object-cover object-center" />
             </div>
             <span>02 / THE SUNPOWER MARKET</span>
           </div>

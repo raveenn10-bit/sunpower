@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -20,13 +20,14 @@ export function FounderFeature() {
             <div className="lg:col-span-5 relative">
               <div className="relative h-[480px] sm:h-[540px] rounded-2xl overflow-hidden shadow-2xl border border-cream/15 group">
                 <Image
-                  src="/assets/market.jpg"
-                  alt="Mr. Nadeesha Gayan with farm fresh market produce"
+                  src="/assets/nadeesha-gayan.jpg"
+                  alt="Mr. Nadeesha Gayan, CEO & Founder of Sunpower Farmers Market & Sunpower Supermarket"
                   fill
                   sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                  priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/20 to-transparent" />
 
                 {/* Floating Heritage Badge */}
                 <div className="absolute top-6 left-6 px-4 py-2 rounded-full bg-cream/95 text-forest backdrop-blur-md shadow-lg flex items-center gap-2 z-10">
@@ -50,16 +51,16 @@ export function FounderFeature() {
                 {/* Founder Identity Plaque with Official Logo */}
                 <div className="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-forest/90 border border-cream/20 backdrop-blur-md z-10">
                   <span className="text-[9px] uppercase tracking-[0.2em] font-mono text-sun-gold block mb-2">
-                    FOUNDER & VISIONARY
+                    CEO & FOUNDER
                   </span>
                   <div className="flex items-center gap-3.5">
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden bg-cream flex-shrink-0 border-2 border-sun-orange shadow p-1">
+                    <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white flex-shrink-0 border-2 border-sun-orange shadow">
                       <Image
-                        src="/assets/sunpower-logo-new.png"
+                        src="/assets/sunpower-icon.png"
                         alt="Sunpower official emblem"
                         fill
                         sizes="48px"
-                        className="object-contain p-0.5"
+                        className="object-cover object-center"
                       />
                     </div>
                     <div>
@@ -67,7 +68,7 @@ export function FounderFeature() {
                         Mr. Nadeesha Gayan
                       </h3>
                       <p className="text-xs text-cream/70 font-light mt-0.5">
-                        Founder, Sunpower Super & Farmers Market
+                        CEO & Founder, Sunpower Farmers Market & Sunpower Supermarket
                       </p>
                     </div>
                   </div>

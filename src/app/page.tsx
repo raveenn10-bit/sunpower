@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -17,6 +17,7 @@ import { ProvisioningBoxes } from "@/components/ProvisioningBoxes";
 import { NearestStoreFinder } from "@/components/NearestStoreFinder";
 import { CommunityGallery } from "@/components/CommunityGallery";
 import { ScrollMotionShowcase } from "@/components/ScrollMotionShowcase";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 
 const FAQ_ITEMS = [
   {
@@ -72,13 +73,13 @@ export default function HomePage() {
             className="max-w-3xl space-y-5"
           >
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-cream/25 text-[10px] sm:text-xs font-semibold tracking-[0.22em] text-cream uppercase shadow-sm">
-              <div className="relative w-5 h-5 rounded-full overflow-hidden bg-cream flex-shrink-0 p-0.5">
+              <div className="relative w-5 h-5 rounded-full overflow-hidden bg-white flex-shrink-0 border border-sun-orange/60">
                 <Image
-                  src="/assets/sunpower-logo-new.png"
+                  src="/assets/sunpower-icon.png"
                   alt="Sunpower Farmers Market official emblem"
                   fill
                   sizes="20px"
-                  className="object-contain"
+                  className="object-cover object-center"
                 />
               </div>
               <span>GOOD FOOD · ROOTED IN OUR SOUTHERN SOIL</span>
@@ -382,6 +383,9 @@ export default function HomePage() {
 
       {/* ─── COMMUNITY PHOTO GALLERY ─── */}
       <CommunityGallery />
+
+      {/* ─── CUSTOMER REVIEWS & TESTIMONIALS ─── */}
+      <TestimonialsSection />
 
       {/* ─── 05 / LET'S TALK GOOD FOOD (CALLOUT) ─── */}
       <section className="bg-cream-sage py-20 px-6 sm:px-8 border-y border-cream-border/70">
