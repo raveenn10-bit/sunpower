@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sunpower-farmers-market.aurora-toast-6676.chatgpt.site/sitemap.xml

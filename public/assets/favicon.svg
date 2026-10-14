@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#faf6f0"/>
+  <!-- Orange Sun Ring -->
+  <circle cx="33" cy="27" r="18" fill="none" stroke="#e86034" stroke-width="3"/>
+  <!-- Teal Ocean Waves on left -->
+  <path d="M 8 20 Q 12 16 16 20 T 24 20" fill="none" stroke="#2c9d7d" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M 8 24 Q 12 20 16 24 T 24 24" fill="none" stroke="#2c9d7d" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Cloud on top right -->
+  <path d="M 39 18 A 3 3 0 0 1 45 16 A 3.5 3.5 0 0 1 50 20 L 40 20 Z" fill="none" stroke="#2c9d7d" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- Honeycomb Farm Terrace Grid -->
+  <path d="M 18 31 L 24 28 L 33 30 L 41 28 L 47 31" fill="none" stroke="#1b5e3f" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M 18 36 L 24 33 L 33 35 L 41 33 L 47 36" fill="none" stroke="#1b5e3f" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M 18 41 L 24 38 L 33 40 L 41 38 L 47 41" fill="none" stroke="#1b5e3f" stroke-width="2" stroke-linejoin="round"/>
+</svg>
