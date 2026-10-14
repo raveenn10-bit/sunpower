@@ -93,32 +93,32 @@ export function TestimonialsSection() {
   const active = TESTIMONIALS[activeIndex];
 
   return (
-    <section className="bg-forest text-cream py-20 sm:py-28 px-6 sm:px-8 overflow-hidden">
+    <section className="bg-forest text-cream py-12 sm:py-20 lg:py-28 px-4 sm:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <SectionReveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-14">
             <div>
-              <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span className="text-[10px] font-semibold tracking-[0.25em] text-cream/50 uppercase">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-cream/50 uppercase">
                   WHAT PEOPLE SAY
                 </span>
                 <a
                   href="https://maps.app.goo.gl/D6W3dzBxecQL47tf7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-cream/10 hover:bg-cream/20 text-cream border border-cream/20 hover:border-sun-orange/60 transition-all group backdrop-blur-sm"
+                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-cream/10 hover:bg-cream/20 text-cream border border-cream/20 hover:border-sun-orange/60 transition-all group backdrop-blur-sm"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
                   <span className="text-cream group-hover:text-sun-orange transition-colors">
-                    Verified Google Reviews · 5.0 ★ (Dewata & Ahangama Branches)
+                    Verified Google Reviews · 5.0 ★
                   </span>
                   <ArrowUpRight
-                    size={13}
+                    size={12}
                     className="text-sun-orange group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                   />
                 </a>
               </div>
-              <h2 className="font-serif text-3xl sm:text-5xl text-cream leading-tight">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-cream leading-tight">
                 Loved by our
                 <br />
                 <em className="italic font-light text-cream-dark">community.</em>
@@ -143,15 +143,15 @@ export function TestimonialsSection() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.45, ease: "easeInOut" }}
-              className="bg-cream/8 backdrop-blur-sm border border-cream/15 rounded-2xl p-8 sm:p-12 md:p-14"
+              className="bg-cream/8 backdrop-blur-sm border border-cream/15 rounded-2xl p-5 sm:p-10 md:p-14"
             >
-              <Quotes size={36} weight="fill" className="text-sun-orange/50 mb-6" />
+              <Quotes size={26} weight="fill" className="text-sun-orange/50 mb-3.5 sm:mb-6 sm:w-9 sm:h-9" />
 
-              <blockquote className="font-serif text-xl sm:text-2xl md:text-3xl text-cream leading-relaxed font-light mb-8 max-w-3xl">
+              <blockquote className="font-serif text-base sm:text-2xl md:text-3xl text-cream leading-relaxed font-light mb-5 sm:mb-8 max-w-3xl">
                 &ldquo;{active.text}&rdquo;
               </blockquote>
 
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-cream/15">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 sm:pt-6 border-t border-cream/15">
                 <div className="flex items-center gap-4">
                   {/* Avatar initials circle */}
                   <div className="w-11 h-11 rounded-full bg-sun-orange/20 border border-sun-orange/40 flex items-center justify-center flex-shrink-0">

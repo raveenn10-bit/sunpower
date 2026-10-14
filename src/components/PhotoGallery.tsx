@@ -376,23 +376,23 @@ export function PhotoGallery() {
   return (
     <section
       id="photo-gallery"
-      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-cream border-t border-cream-border/70 scroll-mt-20"
+      className="py-12 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-cream border-t border-cream-border/70 scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto">
         {/* ─── SECTION HEADER ─── */}
         <SectionReveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-6 sm:mb-10">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest/5 border border-forest/15 text-[10px] sm:text-xs font-semibold tracking-[0.22em] text-forest/75 uppercase mb-3.5">
-                <Sparkle size={13} className="text-sun-orange" weight="fill" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest/5 border border-forest/15 text-[9px] sm:text-xs font-semibold tracking-[0.22em] text-forest/75 uppercase mb-2.5 sm:mb-3.5">
+                <Sparkle size={12} className="text-sun-orange" weight="fill" />
                 <span>AUTHENTIC STORE & MARKET GLIMPSES</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-forest leading-tight tracking-tight">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl lg:text-6xl text-forest leading-tight tracking-tight">
                 A little taste
                 <br />
                 <em className="italic font-light text-forest/90">of our coastal life.</em>
               </h2>
-              <p className="mt-3 text-xs sm:text-sm text-forest/70 max-w-xl font-light leading-relaxed">
+              <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-forest/70 max-w-xl font-light leading-relaxed">
                 Authentic photographs from our three southern locations: Dewata Farmers Market,
                 Galle Fort Boutique, and Sunpower Super Ahangama. Captured by visitors, regulars,
                 and our dedicated team.
@@ -404,9 +404,9 @@ export function PhotoGallery() {
                 href="https://www.instagram.com/sunpowerfarmersmarket/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-forest text-cream hover:bg-forest-light text-xs font-semibold tracking-wide transition-all shadow-sm group"
+                className="inline-flex items-center gap-2.5 px-4 py-2 sm:py-2.5 rounded-full bg-forest text-cream hover:bg-forest-light text-xs font-semibold tracking-wide transition-all shadow-sm group"
               >
-                <InstagramLogo size={16} className="text-pink-300 group-hover:scale-110 transition-transform" />
+                <InstagramLogo size={15} className="text-pink-300 group-hover:scale-110 transition-transform" />
                 <span>@sunpowerfarmersmarket</span>
                 <span className="text-cream/60 group-hover:translate-x-0.5 transition-transform">↗</span>
               </a>
@@ -416,7 +416,7 @@ export function PhotoGallery() {
 
         {/* ─── CATEGORY FILTER TABS ─── */}
         <SectionReveal>
-          <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar scroll-smooth">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2.5 sm:pb-3 mb-6 sm:mb-8 no-scrollbar scroll-smooth">
             {CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat;
               const count = categoryCounts[cat];
@@ -427,7 +427,7 @@ export function PhotoGallery() {
                     setActiveCategory(cat);
                     setLightboxIndex(null);
                   }}
-                  className={`relative flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange ${
+                  className={`relative flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-all whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange ${
                     isActive
                       ? "text-cream shadow-sm"
                       : "bg-cream-warm text-forest/75 hover:bg-cream-sage/60 hover:text-forest border border-cream-border"

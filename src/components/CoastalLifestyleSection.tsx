@@ -59,15 +59,15 @@ export function CoastalLifestyleSection() {
   const activePillar = LIFESTYLE_PILLARS.find((p) => p.id === activePillarId) || LIFESTYLE_PILLARS[0];
 
   return (
-    <section className="max-w-7xl mx-auto px-6 sm:px-8 py-20 sm:py-28 border-b border-cream-border">
+    <section className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-20 lg:py-28 border-b border-cream-border">
       <SectionReveal>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase">
-              <Sparkle size={14} weight="fill" className="text-sun-terracotta" />
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+          <div className="space-y-2 sm:space-y-3">
+            <div className="inline-flex items-center gap-2 text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase">
+              <Sparkle size={13} weight="fill" className="text-sun-terracotta" />
               <span>SOUTHERN COASTAL LIVING</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl text-forest leading-tight">
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-forest leading-tight">
               From soil to surf.
               <br />
               <em className="italic font-normal">A pantry for coastal days.</em>
@@ -82,7 +82,7 @@ export function CoastalLifestyleSection() {
 
       {/* Interactive Tabs */}
       <SectionReveal delay={0.1}>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
           {LIFESTYLE_PILLARS.map((pillar) => {
             const isActive = pillar.id === activePillarId;
             return (
@@ -90,14 +90,14 @@ export function CoastalLifestyleSection() {
                 key={pillar.id}
                 type="button"
                 onClick={() => setActivePillarId(pillar.id)}
-                className={`p-4 sm:p-5 rounded-xl border text-left transition-all duration-300 flex flex-col justify-between ${
+                className={`p-3.5 sm:p-5 rounded-xl border text-left transition-all duration-300 flex flex-col justify-between ${
                   isActive
                     ? "bg-forest text-cream border-forest shadow-md"
                     : "bg-cream-card/60 text-forest border-cream-border hover:bg-cream-card"
                 }`}
               >
                 <div
-                  className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 ${
+                  className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3 ${
                     isActive ? "bg-cream text-forest" : "bg-white text-forest/80 shadow-sm"
                   }`}
                 >
@@ -105,13 +105,13 @@ export function CoastalLifestyleSection() {
                 </div>
                 <div>
                   <span
-                    className={`text-[8.5px] uppercase tracking-wider block font-semibold mb-1 ${
+                    className={`text-[8px] sm:text-[8.5px] uppercase tracking-wider block font-semibold mb-1 ${
                       isActive ? "text-sun-gold" : "text-forest/50"
                     }`}
                   >
                     {pillar.tag}
                   </span>
-                  <h3 className="font-serif text-lg sm:text-xl font-medium leading-snug">
+                  <h3 className="font-serif text-base sm:text-lg lg:text-xl font-medium leading-snug">
                     {pillar.title}
                   </h3>
                 </div>
@@ -129,9 +129,9 @@ export function CoastalLifestyleSection() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.3 }}
-          className="bg-cream rounded-2xl border border-cream-border p-6 sm:p-10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          className="bg-cream rounded-2xl border border-cream-border p-4 sm:p-8 lg:p-10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
         >
-          <div className="lg:col-span-6 relative h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-inner bg-cream-border/20">
+          <div className="lg:col-span-6 relative h-[220px] sm:h-[320px] lg:h-[400px] rounded-xl overflow-hidden shadow-inner bg-cream-border/20">
             <Image
               src={activePillar.image}
               alt={activePillar.title}

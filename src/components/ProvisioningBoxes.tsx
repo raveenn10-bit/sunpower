@@ -59,16 +59,16 @@ const PROVISIONING_BUNDLES = [
 
 export function ProvisioningBoxes() {
   return (
-    <section className="bg-cream-sage/70 py-20 sm:py-28 border-b border-cream-border">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section className="bg-cream-sage/70 py-12 sm:py-20 lg:py-28 border-b border-cream-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <SectionReveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.25em] text-forest/70 uppercase">
-                <Sparkle size={14} weight="fill" className="text-sun-terracotta" />
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-16">
+            <div className="space-y-2 sm:space-y-3">
+              <div className="inline-flex items-center gap-2 text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-forest/70 uppercase">
+                <Sparkle size={13} weight="fill" className="text-sun-terracotta" />
                 <span>VILLA & COMMUNITY PROVISIONING</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-5xl text-forest leading-tight">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-forest leading-tight">
                 Curated boxes.
                 <br />
                 <em className="italic font-normal">Ready for your stay.</em>
@@ -81,18 +81,18 @@ export function ProvisioningBoxes() {
           </div>
         </SectionReveal>
 
-        <MobileAutoScroll desktopGridClassName="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <MobileAutoScroll desktopGridClassName="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {PROVISIONING_BUNDLES.map((bundle, idx) => (
             <div
               key={bundle.id}
-              className="bg-cream p-7 sm:p-8 rounded-2xl border border-cream-border shadow-sm flex flex-col justify-between h-full hover:shadow-lg transition-shadow group"
+              className="bg-cream p-5 sm:p-8 rounded-2xl border border-cream-border shadow-sm flex flex-col justify-between h-full hover:shadow-lg transition-shadow group"
             >
-              <div className="space-y-5">
+              <div className="space-y-4 sm:space-y-5">
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-full bg-cream-sage text-forest font-semibold text-[9px] uppercase tracking-wider mb-2.5">
+                  <span className="inline-block px-2.5 py-1 rounded-full bg-cream-sage text-forest font-semibold text-[8.5px] sm:text-[9px] uppercase tracking-wider mb-2 sm:mb-2.5">
                     {bundle.tag}
                   </span>
-                  <h3 className="font-serif text-2xl text-forest font-medium leading-snug">
+                  <h3 className="font-serif text-xl sm:text-2xl text-forest font-medium leading-snug">
                     {bundle.name}
                   </h3>
                   <p className="text-xs text-forest/70 mt-1 font-light">
@@ -101,13 +101,13 @@ export function ProvisioningBoxes() {
                 </div>
 
                 {/* Included Items */}
-                <div className="space-y-2 pt-3.5 border-t border-cream-border/60">
-                  <span className="text-[10px] uppercase tracking-wider font-semibold text-forest/60 block">
+                <div className="space-y-2 pt-3 border-t border-cream-border/60">
+                  <span className="text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold text-forest/60 block">
                     Box Contents:
                   </span>
-                  <ul className="space-y-2 text-xs text-forest/80">
+                  <ul className="space-y-1.5 sm:space-y-2 text-xs text-forest/80">
                     {bundle.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2.5">
+                      <li key={i} className="flex items-start gap-2">
                         <Check size={14} weight="bold" className="text-forest mt-0.5 flex-shrink-0" />
                         <span>{item}</span>
                       </li>
@@ -115,13 +115,13 @@ export function ProvisioningBoxes() {
                   </ul>
                 </div>
 
-                <p className="text-[11px] text-forest/60 italic pt-1">
+                <p className="text-[10px] sm:text-[11px] text-forest/60 italic pt-1">
                   Ideal for: {bundle.idealFor}
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-cream-border space-y-3">
-                <span className="text-[10px] text-forest/50 block">
+              <div className="pt-4 mt-4 sm:pt-6 sm:mt-6 border-t border-cream-border space-y-2.5 sm:space-y-3">
+                <span className="text-[9px] sm:text-[10px] text-forest/50 block">
                   Availability & pricing confirmed via WhatsApp
                 </span>
 
@@ -131,7 +131,7 @@ export function ProvisioningBoxes() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-between px-5 py-3.5 rounded bg-forest text-cream text-xs font-semibold tracking-wider hover:bg-forest-light transition-all shadow-sm group"
+                  className="w-full inline-flex items-center justify-between px-4 py-3 sm:px-5 sm:py-3.5 rounded bg-forest text-cream text-xs font-semibold tracking-wider hover:bg-forest-light transition-all shadow-sm group"
                 >
                   <span>Inquire About Box</span>
                   <ArrowUpRight

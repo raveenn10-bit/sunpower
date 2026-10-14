@@ -19,6 +19,7 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { PortraitVideoSection } from "@/components/PortraitVideoSection";
 import { ScrollMotionShowcase } from "@/components/ScrollMotionShowcase";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { ScrollytellingSection } from "@/components/ScrollytellingSection";
 
 const FAQ_ITEMS = [
   {
@@ -66,12 +67,12 @@ export default function HomePage() {
         </div>
 
         {/* Hero Top Content */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-8 pt-16 sm:pt-24">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-8 pt-12 sm:pt-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease: "easeOut" }}
-            className="max-w-3xl space-y-5"
+            className="max-w-3xl space-y-4 sm:space-y-5"
           >
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cream/15 backdrop-blur-md border border-cream/25 text-[10px] sm:text-xs font-semibold tracking-[0.22em] text-cream uppercase shadow-sm">
               <div className="relative w-5 h-5 rounded-full overflow-hidden bg-white flex-shrink-0 border border-sun-orange/60">
@@ -155,7 +156,7 @@ export default function HomePage() {
         </div>
 
         {/* Hero Bottom Bar */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-8 pb-7 flex items-center justify-between text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-cream/70 border-t border-cream/15 pt-5">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-8 pb-5 sm:pb-7 flex items-center justify-between text-[8.5px] sm:text-[10px] tracking-[0.2em] uppercase text-cream/70 border-t border-cream/15 pt-4 sm:pt-5">
           <span>GALLE · GALLE FORT · AHANGAMA</span>
           <a
             href="#intro"
@@ -171,22 +172,22 @@ export default function HomePage() {
       <MarqueeTicker />
 
       {/* ─── 01 / THE SUNPOWER WAY ─── */}
-      <section id="intro" className="max-w-7xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <section id="intro" className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-20 lg:py-28">
         <SectionReveal>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start border-b border-cream-border pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start border-b border-cream-border pb-12 sm:pb-20">
             <div className="lg:col-span-3">
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase block">
+              <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase block">
                 01 / THE SUNPOWER WAY
               </span>
             </div>
 
-            <div className="lg:col-span-7 space-y-6">
-              <h2 className="font-serif text-3xl sm:text-5xl text-forest leading-tight">
+            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-forest leading-tight">
                 Good food.
                 <br />
                 <em className="italic text-forest/80 font-normal">Better everyday moments.</em>
               </h2>
-              <p className="text-sm sm:text-base text-forest/75 leading-relaxed max-w-xl">
+              <p className="text-xs sm:text-sm lg:text-base text-forest/75 leading-relaxed max-w-xl">
                 From a nourishing breakfast to something new for the pantry, there’s joy in
                 choosing well. Founded by Mr. Nadeesha Gayan, Sunpower bridges authentic grassroots
                 organic agriculture with conscious coastal lifestyle living across Galle and
@@ -209,15 +210,18 @@ export default function HomePage() {
         </SectionReveal>
       </section>
 
+      {/* ─── SCROLLYTELLING: THE SUNPOWER JOURNEY ─── */}
+      <ScrollytellingSection />
+
       {/* ─── 02 / EXPLORE THE MARKET ─── */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 pb-24 sm:pb-32">
+      <section className="max-w-7xl mx-auto px-4 sm:px-8 pb-16 sm:pb-24 lg:pb-32">
         <SectionReveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
             <div>
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase block mb-3">
+              <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase block mb-2 sm:mb-3">
                 02 / EXPLORE THE MARKET
               </span>
-              <h2 className="font-serif text-3xl sm:text-5xl text-forest">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-forest leading-tight">
                 Find your kind
                 <br />
                 of <em className="italic font-normal">goodness.</em>
@@ -231,14 +235,14 @@ export default function HomePage() {
           </div>
         </SectionReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12">
           {/* Produce Feature Card */}
           <SectionReveal delay={0.1}>
             <Link
               href={`https://wa.me/${WHATSAPP_INTL_NUMBER}?text=Hi%20Sunpower%2C%20what%20fresh%20produce%20is%20available%20today%3F`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative min-h-[460px] sm:min-h-[520px] rounded-lg overflow-hidden bg-forest text-cream flex flex-col justify-between p-8 shadow-md"
+              className="group relative min-h-[280px] sm:min-h-[420px] lg:min-h-[520px] rounded-lg overflow-hidden bg-forest text-cream flex flex-col justify-between p-5 sm:p-8 shadow-md"
             >
               <Image
                 src="/assets/produce.jpg"
@@ -251,7 +255,7 @@ export default function HomePage() {
 
               {/* Tag */}
               <div className="relative z-10 self-start">
-                <span className="px-3.5 py-1.5 rounded-full bg-cream text-forest font-semibold text-[9px] uppercase tracking-wider">
+                <span className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-cream text-forest font-semibold text-[8.5px] sm:text-[9px] uppercase tracking-wider">
                   FRESH PICKS
                 </span>
               </div>
@@ -259,15 +263,15 @@ export default function HomePage() {
               {/* Bottom Caption */}
               <div className="relative z-10 flex items-end justify-between">
                 <div>
-                  <small className="text-[9px] uppercase tracking-widest text-cream/80 block mb-1">
+                  <small className="text-[8.5px] sm:text-[9px] uppercase tracking-widest text-cream/80 block mb-1">
                     COLOURFUL. SIMPLE. FULL OF POSSIBILITY.
                   </small>
-                  <h3 className="font-serif text-3xl sm:text-4xl text-cream font-normal">
+                  <h3 className="font-serif text-2xl sm:text-4xl text-cream font-normal">
                     Fresh produce
                   </h3>
                 </div>
-                <div className="w-10 h-10 rounded-full border border-cream/50 flex items-center justify-center group-hover:bg-cream group-hover:text-forest transition-colors flex-shrink-0">
-                  <ArrowUpRight size={18} />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-cream/50 flex items-center justify-center group-hover:bg-cream group-hover:text-forest transition-colors flex-shrink-0">
+                  <ArrowUpRight size={16} />
                 </div>
               </div>
             </Link>
@@ -281,19 +285,19 @@ export default function HomePage() {
                 href={`https://wa.me/${WHATSAPP_INTL_NUMBER}?text=Hi%20Sunpower%2C%20please%20share%20your%20granola%20selection.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group py-6 sm:py-8 flex items-center gap-6 hover:translate-x-1 transition-transform"
+                className="group py-4 sm:py-7 flex items-center gap-4 sm:gap-6 hover:translate-x-1 transition-transform"
               >
                 <span className="font-mono text-xs text-forest/40 self-start pt-1">01</span>
                 <div className="flex-1">
-                  <small className="text-[9px] uppercase tracking-widest text-forest/50 block">
+                  <small className="text-[8.5px] sm:text-[9px] uppercase tracking-widest text-forest/50 block">
                     START SOMETHING GOOD
                   </small>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-forest group-hover:text-sun-terracotta transition-colors my-1">
+                  <h3 className="font-serif text-xl sm:text-3xl text-forest group-hover:text-sun-terracotta transition-colors my-0.5 sm:my-1">
                     Breakfast & granola
                   </h3>
                   <p className="text-xs text-forest/70">Explore Miss NuTri selections.</p>
                 </div>
-                <ArrowUpRight size={20} className="text-forest/60 group-hover:text-forest flex-shrink-0" />
+                <ArrowUpRight size={18} className="text-forest/60 group-hover:text-forest flex-shrink-0" />
               </a>
 
               {/* Yogurt & Dairy */}
@@ -392,22 +396,22 @@ export default function HomePage() {
       <TestimonialsSection />
 
       {/* ─── 05 / LET'S TALK GOOD FOOD (CALLOUT) ─── */}
-      <section className="bg-cream-sage py-20 px-6 sm:px-8 border-y border-cream-border/70">
+      <section className="bg-cream-sage py-12 sm:py-20 px-4 sm:px-8 border-y border-cream-border/70">
         <SectionReveal>
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-10">
-            <div className="space-y-4">
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-forest/70 uppercase block">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-10">
+            <div className="space-y-3 sm:space-y-4">
+              <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-forest/70 uppercase block">
                 A QUESTION? A SHOPPING LIST?
               </span>
-              <h2 className="font-serif text-5xl sm:text-7xl lg:text-8xl text-forest leading-[0.95] tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-6xl lg:text-8xl text-forest leading-[0.98] sm:leading-[0.95] tracking-tight">
                 Let’s talk
                 <br />
                 <em className="italic font-normal">good food.</em>
-                <span className="text-sun-terracotta ml-3 text-4xl sm:text-6xl align-middle">✳</span>
+                <span className="text-sun-terracotta ml-2 sm:ml-3 text-3xl sm:text-6xl align-middle">✳</span>
               </h2>
             </div>
 
-            <div className="space-y-5 max-w-sm">
+            <div className="space-y-4 sm:space-y-5 max-w-sm">
               <p className="text-xs sm:text-sm text-forest/80 leading-relaxed">
                 Check a product. Discover what’s new.
                 <br />
@@ -417,11 +421,11 @@ export default function HomePage() {
                 href={`https://wa.me/${WHATSAPP_INTL_NUMBER}?text=Hello%20Sunpower!%20I%27d%20like%20to%20ask%20about%20your%20products.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-3.5 rounded bg-forest text-cream text-xs font-semibold tracking-wider hover:bg-forest-light transition-all shadow-md group"
+                className="inline-flex items-center gap-3 px-5 py-3 sm:px-6 sm:py-3.5 rounded bg-forest text-cream text-xs font-semibold tracking-wider hover:bg-forest-light transition-all shadow-md group"
               >
                 <span>Chat on WhatsApp</span>
                 <ArrowUpRight
-                  size={16}
+                  size={15}
                   className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                 />
               </a>
@@ -431,32 +435,32 @@ export default function HomePage() {
       </section>
 
       {/* ─── 06 / A FEW USEFUL THINGS (FAQ) ─── */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <section className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-20 lg:py-28">
         <SectionReveal>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
             <div className="lg:col-span-4">
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase block mb-2">
+              <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase block mb-1.5 sm:mb-2">
                 A FEW USEFUL THINGS
               </span>
-              <h3 className="font-serif text-3xl text-forest">Frequently Asked Questions</h3>
+              <h3 className="font-serif text-2xl sm:text-3xl text-forest">Frequently Asked Questions</h3>
             </div>
 
             <div className="lg:col-span-8 divide-y divide-cream-border">
               {FAQ_ITEMS.map((item, idx) => {
                 const isOpen = openFaqIndex === idx;
                 return (
-                  <div key={idx} className="py-5">
+                  <div key={idx} className="py-4 sm:py-5">
                     <button
                       type="button"
                       onClick={() => toggleFaq(idx)}
-                      className="w-full text-left flex items-center justify-between gap-4 font-serif text-lg sm:text-xl text-forest focus:outline-none group"
+                      className="w-full text-left flex items-center justify-between gap-3 sm:gap-4 font-serif text-base sm:text-lg sm:text-xl text-forest focus:outline-none group"
                       aria-expanded={isOpen}
                     >
                       <span className="group-hover:text-sun-terracotta transition-colors">
                         {item.q}
                       </span>
                       <CaretDown
-                        size={18}
+                        size={16}
                         className={`text-forest/60 transition-transform duration-300 flex-shrink-0 ${
                           isOpen ? "rotate-180 text-sun-terracotta" : ""
                         }`}
@@ -468,7 +472,7 @@ export default function HomePage() {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="pt-3 text-xs sm:text-sm text-forest/75 leading-relaxed overflow-hidden"
+                        className="pt-2.5 sm:pt-3 text-xs sm:text-sm text-forest/75 leading-relaxed overflow-hidden"
                       >
                         <p>{item.a}</p>
                       </motion.div>

@@ -34,15 +34,15 @@ export function NearestStoreFinder() {
     STORES.find((s) => s.id === currentArea.recommendedStoreId) || STORES[0];
 
   return (
-    <section className="bg-cream py-20 sm:py-28 border-b border-cream-border">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section className="bg-cream py-12 sm:py-20 lg:py-28 border-b border-cream-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <SectionReveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div className="space-y-3">
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase block">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+            <div className="space-y-2 sm:space-y-3">
+              <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-forest/60 uppercase block">
                 FIND YOUR LOCAL HUB
               </span>
-              <h2 className="font-serif text-3xl sm:text-5xl text-forest leading-tight">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl text-forest leading-tight">
                 Where are you staying?
                 <br />
                 <em className="italic font-normal">Find your nearest Sunpower.</em>
@@ -57,7 +57,7 @@ export function NearestStoreFinder() {
 
         {/* Location selector pills */}
         <SectionReveal delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
             {USER_AREAS.map((area, idx) => {
               const isSelected = selectedAreaIndex === idx;
               return (
@@ -65,22 +65,22 @@ export function NearestStoreFinder() {
                   key={idx}
                   type="button"
                   onClick={() => setSelectedAreaIndex(idx)}
-                  className={`p-5 rounded-xl border text-left transition-all ${
+                  className={`p-3.5 sm:p-5 rounded-xl border text-left transition-all ${
                     isSelected
                       ? "bg-forest text-cream border-forest shadow-md"
                       : "bg-cream-card/60 text-forest border-cream-border hover:bg-cream-card"
                   }`}
                 >
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
                     <NavigationArrow
-                      size={16}
+                      size={15}
                       weight={isSelected ? "fill" : "regular"}
                       className={isSelected ? "text-sun-orange" : "text-forest/40"}
                     />
-                    <h3 className="font-serif text-lg font-medium">{area.label}</h3>
+                    <h3 className="font-serif text-base sm:text-lg font-medium">{area.label}</h3>
                   </div>
                   <p
-                    className={`text-xs leading-relaxed ${
+                    className={`text-[11px] sm:text-xs leading-relaxed ${
                       isSelected ? "text-cream/75" : "text-forest/60"
                     }`}
                   >
@@ -100,15 +100,15 @@ export function NearestStoreFinder() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="p-8 sm:p-10 rounded-2xl bg-cream-sage/70 border border-cream-border shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+            className="p-4 sm:p-8 lg:p-10 rounded-2xl bg-cream-sage/70 border border-cream-border shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
           >
-            <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sun-terracotta">
-                <MapPin size={16} weight="fill" />
+            <div className="lg:col-span-7 space-y-3.5 sm:space-y-4">
+              <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-sun-terracotta">
+                <MapPin size={15} weight="fill" />
                 <span>RECOMMENDED OUTLET: {recommendedStore.name}</span>
               </div>
 
-              <h3 className="font-serif text-3xl sm:text-4xl text-forest font-medium">
+              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-forest font-medium">
                 {recommendedStore.label}
               </h3>
 
@@ -117,26 +117,26 @@ export function NearestStoreFinder() {
               </p>
 
               <div className="space-y-1 text-xs text-forest/80 pt-2 border-t border-cream-border/60">
-                <span className="font-semibold block text-[10px] uppercase tracking-wider text-forest/60">
+                <span className="font-semibold block text-[9px] sm:text-[10px] uppercase tracking-wider text-forest/60">
                   Address
                 </span>
                 {recommendedStore.address.map((line, i) => (
-                  <span key={i} className="block">
+                  <span key={i} className="block text-xs">
                     {line}
                   </span>
                 ))}
               </div>
 
               {recommendedStore.id === "ahangama" && (
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-cream text-forest text-xs font-medium">
-                  <Clock size={14} className="text-sun-terracotta" />
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-cream text-forest text-xs font-medium">
+                  <Clock size={13} className="text-sun-terracotta" />
                   <span>Open Daily: 9:00 AM – 8:30 PM</span>
                 </div>
               )}
             </div>
 
-            <div className="lg:col-span-5 bg-cream p-6 rounded-xl border border-cream-border space-y-3">
-              <span className="text-[10px] uppercase tracking-wider font-semibold text-forest/60 block">
+            <div className="lg:col-span-5 bg-cream p-4 sm:p-6 rounded-xl border border-cream-border space-y-2.5 sm:space-y-3">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold text-forest/60 block">
                 Quick Actions
               </span>
 
@@ -144,7 +144,7 @@ export function NearestStoreFinder() {
                 href={recommendedStore.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-between px-4 py-3 rounded bg-white border border-cream-border text-xs font-semibold text-forest hover:border-forest transition-colors shadow-sm"
+                className="w-full flex items-center justify-between px-3.5 sm:px-4 py-2.5 sm:py-3 rounded bg-white border border-cream-border text-xs font-semibold text-forest hover:border-forest transition-colors shadow-sm"
               >
                 <span>Get Google Maps Route</span>
                 <ArrowUpRight size={14} />
@@ -153,7 +153,7 @@ export function NearestStoreFinder() {
               {recommendedStore.telephone && (
                 <a
                   href={`tel:+94${recommendedStore.telephone.replace(/\s+/g, "").slice(1)}`}
-                  className="w-full flex items-center justify-between px-4 py-3 rounded bg-white border border-cream-border text-xs font-semibold text-forest hover:border-forest transition-colors shadow-sm"
+                  className="w-full flex items-center justify-between px-3.5 sm:px-4 py-2.5 sm:py-3 rounded bg-white border border-cream-border text-xs font-semibold text-forest hover:border-forest transition-colors shadow-sm"
                 >
                   <div className="flex items-center gap-2">
                     <Phone size={14} />
@@ -171,7 +171,7 @@ export function NearestStoreFinder() {
                 )}.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-between px-4 py-3 rounded bg-forest text-cream text-xs font-semibold hover:bg-forest-light transition-colors shadow-sm"
+                className="w-full flex items-center justify-between px-3.5 sm:px-4 py-2.5 sm:py-3 rounded bg-forest text-cream text-xs font-semibold hover:bg-forest-light transition-colors shadow-sm"
               >
                 <span>Direct WhatsApp Inquiry</span>
                 <ArrowUpRight size={14} />
