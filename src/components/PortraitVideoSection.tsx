@@ -662,49 +662,16 @@ export function PortraitVideoSection() {
 
                       {/* Top Bar Overlay */}
                       <div className="absolute top-0 inset-x-0 p-4 sm:p-5 z-20 flex items-start justify-between gap-2 pointer-events-none">
-                        {/* Status Badges */}
-                        {isCurrentlyPlaying ? (
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-forest-deep/90 backdrop-blur-md border border-sun-orange/60 text-[10px] font-semibold text-sun-orange tracking-wider uppercase shadow-lg">
-                              <span className="flex items-end gap-0.5 h-3">
-                                <span className="w-1 bg-sun-orange animate-[bounce_0.6s_ease-in-out_infinite] h-full rounded-sm" />
-                                <span className="w-1 bg-sun-orange animate-[bounce_0.8s_ease-in-out_0.2s_infinite] h-2/3 rounded-sm" />
-                                <span className="w-1 bg-sun-orange animate-[bounce_0.5s_ease-in-out_0.4s_infinite] h-5/6 rounded-sm" />
-                              </span>
-                              <span>NOW PLAYING</span>
-                            </div>
-
-                            {autoPlayEnabled ? (
-                              <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-forest-deep/90 backdrop-blur-md border border-sun-gold/40 text-[10px] font-mono text-sun-gold shadow-lg">
-                                <ArrowsClockwise
-                                  size={12}
-                                  className="animate-spin text-sun-gold"
-                                  style={{ animationDuration: "6s" }}
-                                />
-                                <span>Auto-next {cycleSecondsRemaining}s</span>
-                              </div>
-                            ) : (
-                              <div className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-full bg-forest-deep/90 backdrop-blur-md border border-cream/20 text-[9px] text-cream/70 font-mono">
-                                <span>Manual</span>
-                              </div>
-                            )}
+                        {/* Location & Category Badges */}
+                        <div className="flex flex-col gap-1.5">
+                          <span className="self-start px-2.5 py-1 rounded-full bg-cream/15 backdrop-blur-md border border-cream/25 text-[9px] sm:text-[10px] font-semibold tracking-wider text-cream uppercase">
+                            {reel.badge}
+                          </span>
+                          <div className="inline-flex items-center gap-1 text-[10px] text-cream/80 bg-forest-deep/70 backdrop-blur-sm px-2 py-0.5 rounded-md border border-cream/10">
+                            <MapPin size={11} className="text-sun-orange" />
+                            <span>{reel.location}</span>
                           </div>
-                        ) : isActive ? (
-                          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-forest-deep/90 backdrop-blur-md border border-cream/30 text-[10px] font-semibold text-cream/90 tracking-wider uppercase shadow-lg">
-                            <Pause size={12} weight="fill" className="text-sun-orange" />
-                            <span>PAUSED</span>
-                          </div>
-                        ) : (
-                          <div className="flex flex-col gap-1.5">
-                            <span className="self-start px-2.5 py-1 rounded-full bg-cream/15 backdrop-blur-md border border-cream/25 text-[9px] sm:text-[10px] font-semibold tracking-wider text-cream uppercase">
-                              {reel.badge}
-                            </span>
-                            <div className="inline-flex items-center gap-1 text-[10px] text-cream/80 bg-forest-deep/70 backdrop-blur-sm px-2 py-0.5 rounded-md border border-cream/10">
-                              <MapPin size={11} className="text-sun-orange" />
-                              <span>{reel.location}</span>
-                            </div>
-                          </div>
-                        )}
+                        </div>
 
                         {/* Top-Right Sound & Duration Badges */}
                         <div className="flex items-center gap-2 ml-auto pointer-events-auto">

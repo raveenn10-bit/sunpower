@@ -71,15 +71,27 @@ export function MakersShowcase() {
               className="bg-cream rounded-2xl border border-cream-border shadow-md overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center"
             >
               {/* Maker Visual */}
-              <div className="lg:col-span-5 relative h-52 sm:h-64 lg:h-full lg:min-h-[420px] bg-forest">
+              <div className="lg:col-span-5 relative h-52 sm:h-64 lg:h-full lg:min-h-[420px] bg-forest overflow-hidden">
                 <Image
                   src={activeMaker.image}
                   alt={activeMaker.name}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover brightness-95"
+                  className={
+                    activeMaker.id === "momiji-natural"
+                      ? "object-contain p-8 sm:p-12 bg-white"
+                      : activeMaker.id === "ceylon-coconut"
+                      ? "object-contain p-4 sm:p-6 bg-white"
+                      : "object-cover brightness-95"
+                  }
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent" />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t ${
+                    activeMaker.id === "momiji-natural" || activeMaker.id === "ceylon-coconut"
+                      ? "from-forest-deep/95 via-forest-deep/20 to-transparent"
+                      : "from-forest/80 via-transparent to-transparent"
+                  }`}
+                />
                 <span className="absolute top-3.5 left-3.5 sm:top-5 sm:left-5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-cream text-forest text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase shadow-sm">
                   {activeMaker.badge}
                 </span>

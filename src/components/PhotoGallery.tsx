@@ -619,68 +619,6 @@ export function PhotoGallery() {
 
         {/* ─── MOBILE VIEW: HORIZONTAL AUTO-SCROLLING GALLERY RAIL (block md:hidden) ─── */}
         <div className="block md:hidden">
-          {/* Status Indicator Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-2.5 mb-3.5 px-0.5">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cream-warm border border-cream-border/90 shadow-2xs">
-              <span
-                className={`w-2 h-2 rounded-full ${
-                  isAutoScrollPaused
-                    ? "bg-amber-500"
-                    : isUserInteracting
-                    ? "bg-sun-orange animate-ping"
-                    : "bg-emerald-500 animate-pulse"
-                }`}
-              />
-              <span className="text-[11px] font-medium text-forest/80 tracking-tight">
-                {isAutoScrollPaused ? (
-                  <span className="font-semibold text-amber-700">Paused</span>
-                ) : isUserInteracting ? (
-                  <span className="font-semibold text-sun-orange">Interacting</span>
-                ) : (
-                  <span className="font-semibold text-emerald-800">Auto-scrolling</span>
-                )}
-                <span className="text-forest/60 font-normal"> · Swipe or tap photo to explore</span>
-              </span>
-            </div>
-
-            <div className="flex items-center gap-1.5 shrink-0">
-              <button
-                type="button"
-                onClick={() => scrollManual("left")}
-                className="w-8 h-8 rounded-full bg-cream-warm active:bg-cream-border hover:bg-cream-sage/60 border border-cream-border text-forest flex items-center justify-center transition-all shadow-2xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange"
-                aria-label="Scroll left"
-              >
-                <ArrowLeft size={13} weight="bold" />
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsAutoScrollPaused((prev) => !prev)}
-                className="inline-flex items-center gap-1.5 px-3 h-8 rounded-full bg-cream-warm active:bg-cream-border hover:bg-cream-sage/60 border border-cream-border text-forest text-[11px] font-medium transition-all shadow-2xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange"
-                aria-label={isAutoScrollPaused ? "Resume auto-scroll" : "Pause auto-scroll"}
-              >
-                {isAutoScrollPaused ? (
-                  <>
-                    <Play size={11} weight="fill" className="text-forest" />
-                    <span>Play</span>
-                  </>
-                ) : (
-                  <>
-                    <Pause size={11} weight="fill" className="text-forest" />
-                    <span>Pause</span>
-                  </>
-                )}
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollManual("right")}
-                className="w-8 h-8 rounded-full bg-cream-warm active:bg-cream-border hover:bg-cream-sage/60 border border-cream-border text-forest flex items-center justify-center transition-all shadow-2xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange"
-                aria-label="Scroll right"
-              >
-                <ArrowRight size={13} weight="bold" />
-              </button>
-            </div>
-          </div>
-
           {/* Auto-scrolling Rail with Edge-to-Edge bleed */}
           <div className="relative -mx-4 sm:-mx-6">
             {/* Left and right subtle edge gradient fade */}
