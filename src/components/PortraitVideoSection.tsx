@@ -378,7 +378,7 @@ export function PortraitVideoSection() {
           }
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.1 }
     );
 
     observer.observe(section);
@@ -590,75 +590,75 @@ export function PortraitVideoSection() {
               return (
                 <div
                   key={reel.id}
-                  className="flex-shrink-0 w-[82vw] max-w-[320px] sm:w-[65vw] sm:max-w-[360px] md:w-auto md:max-w-none snap-center mx-auto"
+                  className="flex-shrink-0 w-[82vw] max-w-[340px] sm:w-[65vw] sm:max-w-[380px] md:w-full md:max-w-none snap-center"
                 >
-                  <SectionReveal delay={idx * 0.12}>
-                    <div
-                      onMouseEnter={() => setShowControlsFor(idx)}
-                      onMouseLeave={() => setShowControlsFor(null)}
-                      onClick={() => togglePlay(idx)}
-                      className={`group relative aspect-[9/16] max-h-[560px] sm:max-h-[640px] md:max-h-none w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-forest-dark border cursor-pointer select-none transition-all duration-500 shadow-xl ${
-                        isCurrentlyPlaying
-                          ? "border-sun-orange ring-2 ring-sun-orange/40 shadow-sun-orange/20"
-                          : isActive
-                          ? "border-sun-gold/60 ring-1 ring-sun-gold/30"
-                          : "border-cream/15 hover:border-cream/40"
-                      }`}
-                    >
-                      {/* Top 30-Second Story-Style Linear Progress Bar */}
-                      {isActive && (
-                        <div className="absolute top-0 inset-x-0 h-1 bg-cream/20 z-30 overflow-hidden">
-                          <div
-                            className={`h-full bg-gradient-to-r from-sun-gold to-sun-orange shadow-[0_0_10px_rgba(245,158,11,0.9)] transition-all ${
-                              autoPlayEnabled && isCurrentlyPlaying
-                                ? "duration-1000 ease-linear"
-                                : "duration-200"
-                            }`}
-                            style={{ width: `${cyclePct}%` }}
-                          />
-                        </div>
-                      )}
-
-                      {/* Video Element */}
-                      <video
-                        ref={(el) => {
-                          videoRefs.current[idx] = el;
-                        }}
-                        src={reel.src}
-                        poster={reel.poster}
-                        playsInline
-                        preload="metadata"
-                        muted={isMuted}
-                        onTimeUpdate={() => handleTimeUpdate(idx)}
-                        onLoadedMetadata={() => handleLoadedMetadata(idx)}
-                        onEnded={() => handleVideoEnded(idx)}
-                        onPlay={() => {
-                          if (activeVideoIndex === idx) {
-                            setIsPlaying(true);
-                          }
-                        }}
-                        onPause={() => {
-                          if (activeVideoIndex === idx) {
-                            setIsPlaying(false);
-                          }
-                        }}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                      />
-
-                      {/* Poster Fallback Image layer if video is loading */}
-                      <div className="absolute inset-0 -z-10">
-                        <Image
-                          src={reel.poster}
-                          alt={reel.title}
-                          fill
-                          sizes="(max-width: 768px) 82vw, 33vw"
-                          className="object-cover"
+                  <div
+                    onMouseEnter={() => setShowControlsFor(idx)}
+                    onMouseLeave={() => setShowControlsFor(null)}
+                    onClick={() => togglePlay(idx)}
+                    className={`group relative aspect-[9/16] min-h-[480px] sm:min-h-[540px] md:min-h-[520px] lg:min-h-[600px] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-forest-dark border cursor-pointer select-none transition-all duration-500 shadow-xl ${
+                      isCurrentlyPlaying
+                        ? "border-sun-orange ring-2 ring-sun-orange/40 shadow-sun-orange/20"
+                        : isActive
+                        ? "border-sun-gold/60 ring-1 ring-sun-gold/30"
+                        : "border-cream/15 hover:border-cream/40"
+                    }`}
+                  >
+                    {/* Top 30-Second Story-Style Linear Progress Bar */}
+                    {isActive && (
+                      <div className="absolute top-0 inset-x-0 h-1 bg-cream/20 z-30 overflow-hidden">
+                        <div
+                          className={`h-full bg-gradient-to-r from-sun-gold to-sun-orange shadow-[0_0_10px_rgba(245,158,11,0.9)] transition-all ${
+                            autoPlayEnabled && isCurrentlyPlaying
+                              ? "duration-1000 ease-linear"
+                              : "duration-200"
+                          }`}
+                          style={{ width: `${cyclePct}%` }}
                         />
                       </div>
+                    )}
 
-                      {/* Permanent Vignette & Glassmorphism Gradients */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/25 to-forest-deep/70 pointer-events-none" />
-                      <div className="absolute inset-0 bg-forest-deep/20 pointer-events-none" />
+                    {/* Poster Fallback Image layer if video is loading */}
+                    <div className="absolute inset-0 z-0">
+                      <Image
+                        src={reel.poster}
+                        alt={reel.title}
+                        fill
+                        sizes="(max-width: 768px) 82vw, 33vw"
+                        className="object-cover"
+                        priority={idx === 0}
+                      />
+                    </div>
+
+                    {/* Video Element */}
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[idx] = el;
+                      }}
+                      src={reel.src}
+                      poster={reel.poster}
+                      playsInline
+                      preload="metadata"
+                      muted={isMuted}
+                      onTimeUpdate={() => handleTimeUpdate(idx)}
+                      onLoadedMetadata={() => handleLoadedMetadata(idx)}
+                      onEnded={() => handleVideoEnded(idx)}
+                      onPlay={() => {
+                        if (activeVideoIndex === idx) {
+                          setIsPlaying(true);
+                        }
+                      }}
+                      onPause={() => {
+                        if (activeVideoIndex === idx) {
+                          setIsPlaying(false);
+                        }
+                      }}
+                      className="absolute inset-0 w-full h-full object-cover z-[1] transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+
+                    {/* Permanent Vignette & Glassmorphism Gradients */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/25 to-forest-deep/70 pointer-events-none z-[2]" />
+                    <div className="absolute inset-0 bg-forest-deep/20 pointer-events-none z-[2]" />
 
                       {/* Top Bar Overlay */}
                       <div className="absolute top-0 inset-x-0 p-4 sm:p-5 z-20 flex items-start justify-between gap-2 pointer-events-none">
@@ -796,8 +796,7 @@ export function PortraitVideoSection() {
                         </div>
                       </div>
                     </div>
-                  </SectionReveal>
-                </div>
+                  </div>
               );
             })}
           </div>
