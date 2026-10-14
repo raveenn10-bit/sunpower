@@ -46,6 +46,15 @@
   opacity: 0.04;
 }
 
+/* Hide scrollbar across all browsers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Stamp circular rotation */
 @keyframes stamp-rotate {
   from {

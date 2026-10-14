@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -11,6 +11,8 @@ import {
   MapPin,
   MagnifyingGlassPlus,
   Sparkle,
+  Play,
+  Pause,
 } from "@phosphor-icons/react";
 import { SectionReveal } from "@/components/SectionReveal";
 
@@ -373,6 +375,162 @@ export function PhotoGallery() {
 
   const currentPhoto = lightboxIndex !== null ? filteredPhotos[lightboxIndex] : null;
 
+  // ─── MOBILE HORIZONTAL AUTO-SCROLL RAIL LOGIC ───
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
+  const interactionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartXRef = useRef<number>(0);
+  const touchStartYRef = useRef<number>(0);
+  const isSwipingRef = useRef<boolean>(false);
+
+  // Prepare repeated items for seamless kinetic looping
+  const repeatedPhotos = useMemo(() => {
+    if (filteredPhotos.length === 0) return [];
+    // Ensure at least 6 items per set so setWidth is wider than mobile viewports
+    const minItemsPerSet = Math.max(filteredPhotos.length, 6);
+    const multiplier = Math.ceil(minItemsPerSet / filteredPhotos.length);
+
+    const baseSet: { photo: GalleryPhoto; originalIndex: number }[] = [];
+    for (let m = 0; m < multiplier; m++) {
+      filteredPhotos.forEach((photo, idx) => {
+        baseSet.push({ photo, originalIndex: idx });
+      });
+    }
+
+    // 3 sets (Set 0, Set 1, Set 2) ensures infinite seamless wrap
+    const fullList: {
+      photo: GalleryPhoto;
+      originalIndex: number;
+      setIndex: number;
+      uniqueKey: string;
+    }[] = [];
+
+    [0, 1, 2].forEach((setIndex) => {
+      baseSet.forEach((item, itemIdx) => {
+        fullList.push({
+          photo: item.photo,
+          originalIndex: item.originalIndex,
+          setIndex,
+          uniqueKey: `${item.photo.id}-s${setIndex}-i${itemIdx}`,
+        });
+      });
+    });
+
+    return fullList;
+  }, [filteredPhotos]);
+
+  // Touch and interaction handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
+    isSwipingRef.current = false;
+    if (interactionTimeoutRef.current) {
+      clearTimeout(interactionTimeoutRef.current);
+    }
+    setIsUserInteracting(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const diffX = Math.abs(e.touches[0].clientX - touchStartXRef.current);
+    const diffY = Math.abs(e.touches[0].clientY - touchStartYRef.current);
+    if (diffX > 10 || diffY > 10) {
+      isSwipingRef.current = true;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (interactionTimeoutRef.current) {
+      clearTimeout(interactionTimeoutRef.current);
+    }
+    // Graceful pause after touch gesture before auto-scroll resumes
+    interactionTimeoutRef.current = setTimeout(() => {
+      setIsUserInteracting(false);
+    }, 2500);
+  };
+
+  const handleMouseEnter = () => {
+    setIsUserInteracting(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsUserInteracting(false);
+  };
+
+  const handleCardClick = (originalIndex: number) => {
+    if (isSwipingRef.current) {
+      isSwipingRef.current = false;
+      return;
+    }
+    openLightbox(originalIndex);
+  };
+
+  const scrollManual = (direction: "left" | "right") => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    setIsUserInteracting(true);
+    const scrollAmount = 260;
+    container.scrollBy({
+      left: direction === "right" ? scrollAmount : -scrollAmount,
+      behavior: "smooth",
+    });
+    if (interactionTimeoutRef.current) {
+      clearTimeout(interactionTimeoutRef.current);
+    }
+    interactionTimeoutRef.current = setTimeout(() => {
+      setIsUserInteracting(false);
+    }, 3000);
+  };
+
+  // Continuous kinetic RAF auto-scroll loop with seamless wrapping
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let animId: number;
+    let lastTime: number | null = null;
+    const speed = 38; // Smooth, relaxed coastal browsing pace (px/sec)
+
+    const step = (now: number) => {
+      if (lastTime !== null && !isAutoScrollPaused && !isUserInteracting && lightboxIndex === null) {
+        const delta = Math.min((now - lastTime) / 1000, 0.1);
+        const set0 = container.querySelector('[data-repeat-set="0"]') as HTMLElement | null;
+        const set1 = container.querySelector('[data-repeat-set="1"]') as HTMLElement | null;
+
+        if (set0 && set1) {
+          const setWidth = set1.offsetLeft - set0.offsetLeft;
+          if (setWidth > 0) {
+            container.scrollLeft += speed * delta;
+            while (container.scrollLeft >= setWidth) {
+              container.scrollLeft -= setWidth;
+            }
+            while (container.scrollLeft < 0) {
+              container.scrollLeft += setWidth;
+            }
+          }
+        }
+      }
+      lastTime = now;
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+    return () => {
+      cancelAnimationFrame(animId);
+    };
+  }, [isAutoScrollPaused, isUserInteracting, lightboxIndex, activeCategory]);
+
+  // Reset scroll position cleanly when category filter changes
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft = 0;
+    }
+    setIsUserInteracting(false);
+    if (interactionTimeoutRef.current) {
+      clearTimeout(interactionTimeoutRef.current);
+    }
+  }, [activeCategory]);
+
   return (
     <section
       id="photo-gallery"
@@ -459,10 +617,151 @@ export function PhotoGallery() {
           </div>
         </SectionReveal>
 
-        {/* ─── RESPONSIVE MASONRY GRID ─── */}
+        {/* ─── MOBILE VIEW: HORIZONTAL AUTO-SCROLLING GALLERY RAIL (block md:hidden) ─── */}
+        <div className="block md:hidden">
+          {/* Status Indicator Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-2.5 mb-3.5 px-0.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cream-warm border border-cream-border/90 shadow-2xs">
+              <span
+                className={`w-2 h-2 rounded-full ${
+                  isAutoScrollPaused
+                    ? "bg-amber-500"
+                    : isUserInteracting
+                    ? "bg-sun-orange animate-ping"
+                    : "bg-emerald-500 animate-pulse"
+                }`}
+              />
+              <span className="text-[11px] font-medium text-forest/80 tracking-tight">
+                {isAutoScrollPaused ? (
+                  <span className="font-semibold text-amber-700">Paused</span>
+                ) : isUserInteracting ? (
+                  <span className="font-semibold text-sun-orange">Interacting</span>
+                ) : (
+                  <span className="font-semibold text-emerald-800">Auto-scrolling</span>
+                )}
+                <span className="text-forest/60 font-normal"> · Swipe or tap photo to explore</span>
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1.5 shrink-0">
+              <button
+                type="button"
+                onClick={() => scrollManual("left")}
+                className="w-8 h-8 rounded-full bg-cream-warm active:bg-cream-border hover:bg-cream-sage/60 border border-cream-border text-forest flex items-center justify-center transition-all shadow-2xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange"
+                aria-label="Scroll left"
+              >
+                <ArrowLeft size={13} weight="bold" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsAutoScrollPaused((prev) => !prev)}
+                className="inline-flex items-center gap-1.5 px-3 h-8 rounded-full bg-cream-warm active:bg-cream-border hover:bg-cream-sage/60 border border-cream-border text-forest text-[11px] font-medium transition-all shadow-2xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange"
+                aria-label={isAutoScrollPaused ? "Resume auto-scroll" : "Pause auto-scroll"}
+              >
+                {isAutoScrollPaused ? (
+                  <>
+                    <Play size={11} weight="fill" className="text-forest" />
+                    <span>Play</span>
+                  </>
+                ) : (
+                  <>
+                    <Pause size={11} weight="fill" className="text-forest" />
+                    <span>Pause</span>
+                  </>
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollManual("right")}
+                className="w-8 h-8 rounded-full bg-cream-warm active:bg-cream-border hover:bg-cream-sage/60 border border-cream-border text-forest flex items-center justify-center transition-all shadow-2xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange"
+                aria-label="Scroll right"
+              >
+                <ArrowRight size={13} weight="bold" />
+              </button>
+            </div>
+          </div>
+
+          {/* Auto-scrolling Rail with Edge-to-Edge bleed */}
+          <div className="relative -mx-4 sm:-mx-6">
+            {/* Left and right subtle edge gradient fade */}
+            <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-cream to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-cream to-transparent z-10 pointer-events-none" />
+
+            <div
+              ref={scrollContainerRef}
+              className="flex gap-3.5 sm:gap-4 overflow-x-auto no-scrollbar px-4 sm:px-6 py-2 cursor-grab active:cursor-grabbing select-none"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchEnd}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              {repeatedPhotos.map((item) => (
+                <div
+                  key={item.uniqueKey}
+                  data-repeat-set={item.setIndex}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => handleCardClick(item.originalIndex)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openLightbox(item.originalIndex);
+                    }
+                  }}
+                  className="w-[240px] sm:w-[280px] h-[320px] rounded-2xl shrink-0 overflow-hidden relative border border-cream-border/70 shadow-md bg-forest-dark cursor-pointer select-none active:scale-[0.98] transition-transform text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-sun-orange"
+                  aria-label={`View photo: ${item.photo.title} (${item.photo.branch})`}
+                >
+                  <Image
+                    src={item.photo.src}
+                    alt={item.photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 240px, 280px"
+                    className="object-cover group-hover:scale-105 active:scale-105 transition-transform duration-700 brightness-95"
+                    priority={item.originalIndex === 0 && item.setIndex === 0}
+                    loading={item.originalIndex === 0 && item.setIndex === 0 ? "eager" : "lazy"}
+                  />
+
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/95 via-forest-deep/30 to-black/20" />
+
+                  {/* Top badges: Store branch pill & zoom badge */}
+                  <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cream/90 backdrop-blur-md text-forest text-[10px] font-semibold tracking-wider uppercase shadow-xs">
+                      <MapPin size={10} weight="fill" className="text-sun-orange" />
+                      <span>{item.photo.branch.replace(" Supermarket", "").replace(" Market", "")}</span>
+                    </span>
+
+                    <span className="w-7 h-7 rounded-full bg-cream/90 backdrop-blur-md flex items-center justify-center text-forest text-xs shadow-xs">
+                      <MagnifyingGlassPlus size={14} weight="bold" />
+                    </span>
+                  </div>
+
+                  {/* Bottom caption block */}
+                  <div className="absolute bottom-0 inset-x-0 p-3.5 sm:p-4 pointer-events-none">
+                    <div className="space-y-1">
+                      <span className="inline-block text-[9px] uppercase tracking-widest text-sun-gold font-mono font-semibold">
+                        {item.photo.tag}
+                      </span>
+                      <h3 className="font-serif text-sm sm:text-base text-cream font-medium leading-snug line-clamp-2">
+                        {item.photo.title}
+                      </h3>
+                      <p className="text-[11px] text-cream/70 line-clamp-1 font-light leading-relaxed">
+                        {item.photo.caption}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ─── DESKTOP VIEW: RESPONSIVE MASONRY GRID (hidden md:block) ─── */}
         <div
           id="gallery-masonry"
-          className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 [column-fill:_balance]"
+          className="hidden md:block columns-2 lg:columns-3 xl:columns-4 gap-4 [column-fill:_balance]"
         >
           {filteredPhotos.map((photo, idx) => (
             <motion.div
@@ -620,9 +919,13 @@ export function PhotoGallery() {
                           <span className="px-2.5 py-0.5 rounded-full bg-sun-orange/20 border border-sun-orange/40 text-sun-orange text-[9.5px] uppercase tracking-wider font-semibold font-mono">
                             {currentPhoto.tag}
                           </span>
-                          <span className="text-[11px] text-cream/60 flex items-center gap-1">
-                            <MapPin size={11} className="text-cream/50" />
-                            {currentPhoto.branch}
+                          <span className="text-[11px] text-cream/75 flex flex-wrap items-center gap-1.5">
+                            <span className="flex items-center gap-1 text-cream/90 font-medium">
+                              <MapPin size={11} className="text-sun-orange" />
+                              {currentPhoto.branch}
+                            </span>
+                            <span className="text-cream/40">·</span>
+                            <span className="text-cream/70 font-light">{currentPhoto.branchDetail}</span>
                           </span>
                         </div>
                         <h3 className="font-serif text-lg sm:text-2xl text-cream font-medium">
