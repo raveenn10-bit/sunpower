@@ -8,14 +8,46 @@ import { StoreMapEmbed } from "@/components/StoreMapEmbed";
 import { PhotoGallery } from "@/components/PhotoGallery";
 
 export const metadata = {
-  title: "Our Stores",
+  title: "Our Stores in Galle Fort, Dewata & Ahangama | Southern Sri Lanka",
   description:
-    "Visit Sunpower Farmers Market in Dewata, Galle Fort, and Ahangama on Sri Lanka’s southern coast. Store locations, directions, and phone numbers.",
+    "Find Sunpower Farmers Market locations in Dewata (Galle), historic Galle Fort, and Ahangama on Sri Lanka’s South Coast. Store opening hours, Google Maps directions, international card payment info, and direct villa delivery.",
+  alternates: {
+    canonical: "https://sunpowerfarmersmarket.lk/stores",
+  },
+  openGraph: {
+    title: "Our Stores in Galle Fort, Dewata & Ahangama | Sunpower Farmers Market",
+    description:
+      "Find Sunpower Farmers Market locations across Sri Lanka’s southern coast. 3 prime branches: Galle Fort, Dewata Beach, and Ahangama Surf Hub. Open daily.",
+    url: "https://sunpowerfarmersmarket.lk/stores",
+  },
+};
+
+const storeBreadcrumbs = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://sunpowerfarmersmarket.lk",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Our Stores",
+      item: "https://sunpowerfarmersmarket.lk/stores",
+    },
+  ],
 };
 
 export default function StoresPage() {
   return (
     <div className="space-y-0">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(storeBreadcrumbs) }}
+      />
       {/* ─── PAGE HERO ─── */}
       <section className="bg-cream-dark py-16 sm:py-24 border-b border-cream-border/60">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-4">

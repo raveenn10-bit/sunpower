@@ -20,23 +20,40 @@ import { PortraitVideoSection } from "@/components/PortraitVideoSection";
 import { ScrollMotionShowcase } from "@/components/ScrollMotionShowcase";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ScrollytellingSection } from "@/components/ScrollytellingSection";
+import { TravelerConciergeGuide } from "@/components/TravelerConciergeGuide";
 
 const FAQ_ITEMS = [
   {
-    q: "How can I check product availability?",
-    a: "Message us on WhatsApp with the product name and your preferred store. Our team can confirm current availability, weights, and daily delivery prices.",
+    q: "Where can tourists buy organic groceries and fresh produce in Galle and Ahangama, Sri Lanka?",
+    a: "Tourists and expats can find fresh organic produce, sourdough bread, and natural pantry essentials at Sunpower Farmers Market across three convenient south coast locations: 470/B Matara Road in Dewata (Galle), 10 Leyn Baan Street inside historic Galle Fort, and 91 Matara Road in Ahangama (Sunpower Super). All branches stock daily farm arrivals, tropical fruits, artisan granolas, and imported food items.",
   },
   {
-    q: "Can I place an order online?",
-    a: "This website is a guide to our market. Send your shopping inquiry on WhatsApp; the team will confirm availability, prices, and any collection or delivery arrangements. No payment is taken here.",
+    q: "Can foreign visitors pay with international credit cards (Visa / Mastercard) at Sunpower?",
+    a: "Yes. Sunpower Farmers Market welcomes international Visa, Mastercard, and NFC contactless tap-to-pay (including Apple Pay and Google Wallet) across all branches in Dewata, Galle Fort, and Ahangama. Cash in Sri Lankan Rupees (LKR) is also accepted.",
   },
   {
-    q: "Do you supply villas and retreats on the south coast?",
-    a: "Yes! We regularly prepare fresh arrival crates, heirloom pantry supplies, and organic greens for private villas and boutique hotels from Galle Fort to Midigama and Weligama.",
+    q: "Do you offer villa grocery provisioning and delivery to holiday villas in Galle, Unawatuna, Thalpe, or Ahangama?",
+    a: "Yes, Sunpower operates a dedicated WhatsApp Villa Provisioning Concierge. Travelers staying in private villas, boutique hotels, or Airbnb properties between Galle Fort and Weligama can send their shopping list via WhatsApp by 2:00 PM for prompt same-day doorstep delivery of fresh fruit, vegetables, sourdough, dairy, and pantry staples.",
   },
   {
-    q: "Where can I see the latest arrivals?",
-    a: "Follow Sunpower on Facebook or Instagram (@sunpowerfarmersmarket) for daily updates, or contact a branch directly.",
+    q: "What vegan, dairy-free, and gluten-free foods are available for health-conscious travelers?",
+    a: "Sunpower carries an extensive collection of dietary-friendly foods, including plant-based milks (oat, almond, soy), organic chia seeds, artisan vegan cheeses, Ceylon cold-pressed virgin coconut oil, gluten-free grains and oats, local artisanal granola (Miss NuTri), fermented kombucha, and raw Ceylon honey.",
+  },
+  {
+    q: "What are the opening hours and locations of Sunpower Farmers Market branches?",
+    a: "Dewata Branch (Galle): 470/B Matara Road, open daily 07:30 - 21:00. Galle Fort Branch: 10 Leyn Baan Street, open daily 07:30 - 21:00. Ahangama Branch (Sunpower Super): 91 Matara Road, open daily 07:00 - 21:30. All branches are open 7 days a week.",
+  },
+  {
+    q: "Does Sunpower stock reef-safe sunscreen, natural mosquito repellents, and eco toiletries?",
+    a: "Yes. Sunpower features natural care essentials tailored for travelers and surfers, including mineral biodegradable reef-safe sun protection, natural citronella insect repellents, pure virgin coconut oils, aloe vera after-sun soothing gel, and chemical-free personal care items.",
+  },
+  {
+    q: "Where can I buy fresh artisanal sourdough bread on Sri Lanka's South Coast?",
+    a: "Sunpower Farmers Market receives daily morning deliveries of naturally leavened, crusty artisanal sourdough bread, multigrain boules, and fresh bakes across its Dewata, Galle Fort, and Ahangama stores. Sourdough loaves can also be reserved or added to villa provisioning orders via WhatsApp.",
+  },
+  {
+    q: "How do tourists order groceries via WhatsApp for their holiday villa or Airbnb?",
+    a: "Simply message Sunpower on WhatsApp (+94 77 677 5956) with your grocery list, preferred quantities, and villa location pin. Our staff will confirm availability, pack your items with care, and dispatch your order directly to your door.",
   },
 ];
 
@@ -367,6 +384,9 @@ export default function HomePage() {
 
       {/* ─── VILLA & SURFER PROVISIONING CRATES ─── */}
       <ProvisioningBoxes />
+
+      {/* ─── FOREIGN TRAVELER & EXPAT CONCIERGE GUIDE (SEO / AEO / GEO) ─── */}
+      <TravelerConciergeGuide />
 
       {/* ─── PROMINENT FOUNDER FEATURE: MR. NADEESHA GAYAN ─── */}
       <FounderFeature />

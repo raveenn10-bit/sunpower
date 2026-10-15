@@ -4,14 +4,46 @@ import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata = {
-  title: "Our Story",
+  title: "Our Story & Sustainable Food Philosophy | Southern Sri Lanka",
   description:
-    "Learn about Sunpower Farmers Market on Sri Lanka’s southern coast. Rooted in wholesome food, local makers, and mindful living.",
+    "Learn about Sunpower Farmers Market on Sri Lanka’s southern coast. Founded by Nadeesha Gayan to connect local organic farmers, artisan sourdough bakers, and conscious travelers across Galle Fort, Dewata, and Ahangama.",
+  alternates: {
+    canonical: "https://sunpowerfarmersmarket.lk/about",
+  },
+  openGraph: {
+    title: "Our Story & Philosophy | Sunpower Farmers Market — Sri Lanka",
+    description:
+      "Rooted in wholesome food, local makers, artisan sourdough, and mindful living along Sri Lanka’s southern coast.",
+    url: "https://sunpowerfarmersmarket.lk/about",
+  },
+};
+
+const aboutBreadcrumbs = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://sunpowerfarmersmarket.lk",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Our Story",
+      item: "https://sunpowerfarmersmarket.lk/about",
+    },
+  ],
 };
 
 export default function AboutPage() {
   return (
     <div className="space-y-0">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumbs) }}
+      />
       {/* ─── PAGE HERO ─── */}
       <section className="bg-cream-dark py-16 sm:py-24 border-b border-cream-border/60">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-4">

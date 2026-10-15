@@ -1,3 +1,29 @@
 User-agent: *
 Allow: /
-Sitemap: https://sunpower-farmers-market.aurora-toast-6676.chatgpt.site/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://sunpowerfarmersmarket.lk/sitemap.xml
+Host: https://sunpowerfarmersmarket.lk

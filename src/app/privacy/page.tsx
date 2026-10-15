@@ -6,6 +6,9 @@ export const metadata = {
   title: "Privacy & Terms",
   description:
     "Privacy and terms of use for Sunpower Farmers Market website. Transparent information about browser storage, WhatsApp inquiries, and external services.",
+  alternates: {
+    canonical: "https://sunpowerfarmersmarket.lk/privacy",
+  },
 };
 
 export default function PrivacyPage() {
